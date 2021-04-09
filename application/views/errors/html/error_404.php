@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$base_url = 'http://localhost/media/';
+$base_url = 'http://localhost:82/media/';
 
 ?>
 

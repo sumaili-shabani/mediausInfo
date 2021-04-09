@@ -40,54 +40,54 @@
 
                                     			<div class="col-md-8">
                                                     
-                                    				<div class="col-md-12">
-                                    					<div class="row afficher_liste">
-                                                  <!-- blog -->
-                                    						   <!-- <div class="col-xs-6 col-lg-6 col-12">
-                                                        <div class="card">
-                                                            <div class="card-header col-md-12">
-                                                                <img class="card-img-top" src="<?php echo($icone_info) ?>" alt="Card image cap">
+                                      				<div class="col-md-12">
+                                      					<div class="row afficher_liste">
+                                                    <!-- blog -->
+                                      						   <!-- <div class="col-xs-6 col-lg-6 col-12">
+                                                          <div class="card">
+                                                              <div class="card-header col-md-12">
+                                                                  <img class="card-img-top" src="<?php echo($icone_info) ?>" alt="Card image cap">
 
-                                                            </div>
-                                                            <div class="card-body">
-                                                                 <div class="col-md-12 text-uppercase">
-                                                                    <a href="" class="text-primary">patrona shabani sumaili</a>
-                                                                    &nbsp;<a href="tel:" class="text-primary"><i class="fa fa-phone"></i></a>
-                                                                </div>
-                                                                <div class="col-md-12 list-item-heading mb-4">
-                                                                    <a href="mailto:" class="text-primary"><i class="fa fa-google"></i> sumailiroger681@gmail.com</a>
-                                                                    Biographie
-                                                                    <p>
-                                                                        <b>Sexe: </b> M
-                                                                        <b>Pays: </b> RDCongo <br>
-                                                                        <b>Adresse domicile:</b>
-                                                                        Goma quartier mabanga sud
-                                                                    </p>
-                                                                </div>
-                                                                <footer>
-                                                                    <p class="text-muted text-small mb-0 font-weight-light text-center"><i class="fa fa-clock-o"></i> 09.04.2018</p>
-                                                                </footer>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
-                                                    <!-- fin -->
+                                                              </div>
+                                                              <div class="card-body">
+                                                                   <div class="col-md-12 text-uppercase">
+                                                                      <a href="" class="text-primary">patrona shabani sumaili</a>
+                                                                      &nbsp;<a href="tel:" class="text-primary"><i class="fa fa-phone"></i></a>
+                                                                  </div>
+                                                                  <div class="col-md-12 list-item-heading mb-4">
+                                                                      <a href="mailto:" class="text-primary"><i class="fa fa-google"></i> sumailiroger681@gmail.com</a>
+                                                                      Biographie
+                                                                      <p>
+                                                                          <b>Sexe: </b> M
+                                                                          <b>Pays: </b> RDCongo <br>
+                                                                          <b>Adresse domicile:</b>
+                                                                          Goma quartier mabanga sud
+                                                                      </p>
+                                                                  </div>
+                                                                  <footer>
+                                                                      <p class="text-muted text-small mb-0 font-weight-light text-center"><i class="fa fa-clock-o"></i> 09.04.2018</p>
+                                                                  </footer>
+                                                              </div>
+                                                          </div>
+                                                      </div> -->
+                                                      <!-- fin -->
 
 
-                                    					</div>
-                                    				</div>
-                                                    <div class="col-md-12" style="margin-top: 10px;">
-                                                        <div class="row">
-                                                            
-                                                            <div class="col-md-2"></div>
-                                                            <div class="col-md-8">
-                                                                <nav aria-label="Page navigation example" id="pagination_link2">
-                                                              
-                                                                </nav>
-                                                            </div>
-                                                            <div class="col-md-2"></div>
-                                                            
-                                                        </div>
-                                                    </div>
+                                      					</div>
+                                      				</div>
+                                              <div class="col-md-12" style="margin-top: 10px;">
+                                                  <div class="row">
+                                                      
+                                                      <div class="col-md-2"></div>
+                                                      <div class="col-md-8">
+                                                          <nav aria-label="Page navigation example" id="pagination_link2">
+                                                        
+                                                          </nav>
+                                                      </div>
+                                                      <div class="col-md-2"></div>
+                                                      
+                                                  </div>
+                                              </div>
                                     			</div>
                                     		</div>
                                     	</div>
@@ -287,29 +287,29 @@
         </script>
 
 
-        <script>
-        $(document).ready(function(){
-          var sample_data = new Bloodhound({
-           datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-           queryTokenizer: Bloodhound.tokenizers.whitespace,
-           prefetch:'<?php echo base_url(); ?>user/fetch_auto_offres',
-           remote:{
-            url:'<?php echo base_url(); ?>user/fetch_auto_offres/%QUERY',
-            wildcard:'%QUERY'
-           }
-          });
-          
+        <script type="text/javascript">
+          $(document).ready(function(){
+            var sample_data = new Bloodhound({
+             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+             queryTokenizer: Bloodhound.tokenizers.whitespace,
+             prefetch:'<?php echo base_url(); ?>user/fetch_auto_offres',
+             remote:{
+              url:'<?php echo base_url(); ?>user/fetch_auto_offres/%QUERY',
+              wildcard:'%QUERY'
+             }
+            });
+            
 
-          $('#prefetch .typeahead').typeahead(null, {
-           name: 'sample_data',
-           display: 'name',
-           source:sample_data,
-           limit:10,
-           templates:{
-            suggestion:Handlebars.compile('<div class="row"><div class="col-md-2" style="padding-right:5px; padding-left:5px;"><img src="<?php echo(base_url()) ?>upload/photo/{{image}}" class="img-thumbnail" width="48" /></div><div class="col-md-10" style="padding-right:5px; padding-left:5px;">{{name}}</div></div>')
-           }
+            $('#prefetch .typeahead').typeahead(null, {
+             name: 'sample_data',
+             display: 'name',
+             source:sample_data,
+             limit:10,
+             templates:{
+              suggestion:Handlebars.compile('<div class="row"><div class="col-md-2" style="padding-right:5px; padding-left:5px;"><img src="<?php echo(base_url()) ?>upload/photo/{{image}}" class="img-thumbnail" width="48" /></div><div class="col-md-10" style="padding-right:5px; padding-left:5px;">{{name}}</div></div>')
+             }
+            });
           });
-        });
         </script>
         
         

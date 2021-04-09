@@ -10,7 +10,7 @@
 
                         <div class="input-group mb-2 mr-sm-2">
                             
-                            <input type="text" class="form-control typeahead search_text" id="inlineFormInputGroupUsername2" placeholder="Rechecher un candidat...">
+                            <input type="text" class="form-control typeahead search_text" id="inlineFormInputGroupUsername2" placeholder="Rechecher une offre d'emplois...">
                             
                         </div>
                         
@@ -21,7 +21,7 @@
     </div>
     <!-- fin recherche -->
 
-    <h6>Filtrer les candidats par:</h6>
+    <h6>Filtrer les offres d'emplois par:</h6>
 	<hr>
 
 

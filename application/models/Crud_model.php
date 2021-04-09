@@ -216,6 +216,28 @@ class crud_model extends CI_Model{
     }
  }
 
+ // auto complete text roffres d'emplois
+ function fetch_data_auto_articles($query)
+ {
+
+    $this->db->like('nom', $query);
+    $this->db->or_like('description', $query);
+    $this->db->or_like('nom_cat', $query);
+    
+    $query = $this->db->get('profile_article');
+    if($query->num_rows() > 0)
+    {
+       foreach($query->result_array() as $row)
+       {
+        $output[] = array(
+         'name'  => $row["nom"],
+         'image'  => $row["image"]
+        );
+       }
+     echo json_encode($output);
+    }
+ }
+
   // pagination galery utilisateur
   function fetch_details_pagination_galery($limit, $start){
     $output = '';
@@ -462,6 +484,16 @@ class crud_model extends CI_Model{
 
   }
 
+  function get_name_article_pub($idart){
+      $this->db->where("idart", $idart);
+      $nom = $this->db->get("profile_article")->result_array();
+      foreach ($nom as $key) {
+        $titre = $key["nom"];
+        return $titre ;
+      }
+
+  }
+
   function get_info_job_tag_by_codejob($codejob){
       $this->db->where('codejob',$codejob);
       $this->db->limit(1);
@@ -680,6 +712,12 @@ class crud_model extends CI_Model{
       return $this->db->get('category');
   }
 
+  function Select_popular_menu()
+  {
+     
+      return $this->db->query('SELECT * FROM profile_vue ORDER BY RAND() LIMIT 5');
+  }
+
   function Select_article_4_cool()
   {
       return $this->db->query('SELECT * FROM profile_article  GROUP BY idcat ORDER BY RAND() LIMIT 4');
@@ -718,7 +756,12 @@ class crud_model extends CI_Model{
 
   function Select_article_by_cat()
   {
-      return $this->db->query('SELECT * FROM profile_article  GROUP BY idcat LIMIT 7');
+      return $this->db->query('SELECT * FROM profile_article  GROUP BY idcat LIMIT 7 ');
+  }
+
+  function Select_padding_articles_tri()
+  {
+      return $this->db->query('SELECT * FROM profile_publicite  ORDER BY RAND() LIMIT 6 ');
   }
 
   function Select_article_publicite()
@@ -733,7 +776,7 @@ class crud_model extends CI_Model{
 
   function Select_galery_publicite_lm3()
   {
-      return $this->db->query('SELECT * FROM galery2 ORDER BY created_at DESC LIMIT 2');
+      return $this->db->query('SELECT * FROM galery2 ORDER BY created_at DESC LIMIT 4');
   }
 
   
@@ -768,7 +811,8 @@ class crud_model extends CI_Model{
 
   function Select_our_article_tag($idcat)
   {   
-      $this->db->limit(8);
+      $this->db->limit(12);
+      $this->db->order_by('created_at','DESC');
       return $this->db->get_where("profile_article", array(
         'idcat' =>  $idcat
       ));
@@ -793,7 +837,7 @@ class crud_model extends CI_Model{
   function Select_our_articles_tag($idart)
   {   
       $this->db->limit(1);
-      return $this->db->get_where("article", array(
+      return $this->db->get_where("profile_article", array(
         'idart' =>  $idart
       ));
   }
@@ -1882,6 +1926,7 @@ class crud_model extends CI_Model{
     function fetch_pagination_articles()
     {
       $this->db->limit(50);
+      $this->db->order_by('created_at', 'DESC');
       $query = $this->db->query("SELECT * FROM profile_article");
       return $query->num_rows();
     }
@@ -2187,9 +2232,11 @@ class crud_model extends CI_Model{
     $output = '';
     $this->db->select("*");
     $this->db->from("profile_article");
-    $this->db->order_by("nom", "ASC");
+    $this->db->order_by("created_at", "DESC");
     $this->db->limit($limit, $start);
     $query = $this->db->get();
+
+
 
     foreach($query->result() as $key)
     {
@@ -2206,27 +2253,27 @@ class crud_model extends CI_Model{
       }
 
      $output .= '
-
-      <div class="col-md-6">
-        <div class="news-post image-post2">
-          <div class="post-gallery">
-            <img src="'.base_url().'upload/article/'.$key->image.'" alt="" style="height: 250px;">
-            <div class="hover-box">
-              <div class="inner-hover">
-                <a class="category-post world" href="'.base_url().'home/publication/'.$key->idcat.'/'.$key->nom_cat.'"> '.$key->nom_cat.' </a>
-
-                <h2><a href="'.base_url().'home/article/'.$key->idart.'">'.nl2br(substr($key->nom, 0,50)).'...</a></h2>
-                <ul class="post-tags">
-                  <li><i class="fa fa-clock-o"></i> '.nl2br(substr(date(DATE_RFC822, strtotime($key->created_at)), 0, 23)).'</li>
-                  <li><a href="#"><i class="fa fa-eye"></i><span>  '.$nombre_vue.'</span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="post-content">
-            <p>
-              '.nl2br(substr($key->description, 0,200)).' ...
-            </p>
+      <div class="col-sm-6 p-r-25 p-r-15-sr991">
+        <!-- Item latest -->
+        <div class="m-b-45">
+          <a href="'.base_url().'home/article/'.$key->idart.'" class="wrap-pic-w hov1 trans-03">
+            <img src="'.base_url().'upload/article/'.$key->image.'" alt="IMG" style="height: 200px;">
+          </a>
+          <div class="p-t-16">
+            <h5 class="p-b-5">
+              <a href="'.base_url().'home/article/'.$key->idart.'" class="f1-m-3 cl2 hov-cl10 trans-03">
+                '.nl2br(substr($key->nom, 0,100)).'...
+              </a>
+            </h5>
+            <span class="cl8">
+             
+              <span class="f1-s-3 m-rl-3">
+                <i class="fa fa-eye"></i>  '.$nombre_vue.' vue(s) &nbsp;&nbsp; - &nbsp;&nbsp;
+              </span>
+              <span class="f1-s-3">
+                '.nl2br(substr(date(DATE_RFC822, strtotime($key->created_at)), 0, 23)).'
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -3142,7 +3189,7 @@ class crud_model extends CI_Model{
           }
 
           $output .= '
-            <div class="card colmd-12">
+            <div class="card col-md-12 mb-2">
             <div class="sl-item card-body">
                
                 <div class="sl-right">
