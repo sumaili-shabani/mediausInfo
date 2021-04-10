@@ -78,7 +78,7 @@
                         <div class="col-md-12 text-left">
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1" required>
-                                <span class="custom-control-label">&nbsp;<a href="javascript:void(0);">J'accepte Politique de confidentialité</a></span>
+                                <span class="custom-control-label">&nbsp;<a href="<?php echo base_url(); ?>home/contrat">J'accepte Politique de confidentialité</a></span>
                             </label>
                         </div>
                         
@@ -225,7 +225,7 @@
                         <div class="col-md-12 text-left">
                             <label class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1" required>
-                                <span class="custom-control-label">&nbsp;<a href="javascript:void(0);">J'accepte Politique de confidentialité</a></span>
+                                <span class="custom-control-label">&nbsp;<a href="<?php echo base_url(); ?>home/contrat">J'accepte Politique de confidentialité</a></span>
                             </label>
                         </div>
 
