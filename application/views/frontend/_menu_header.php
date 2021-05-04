@@ -311,7 +311,7 @@
                        
                         
                         
-                        <li class="main-menu-active">
+                        <li class="main-menu">
                             <a href="#">Autres</a>
                             <ul class="sub-menu">
                                 

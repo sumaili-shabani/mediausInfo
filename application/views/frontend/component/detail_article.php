@@ -92,7 +92,7 @@
                                 </a>
 					            <!-- <img src="<?php echo(base_url())?>upload/article/<?php echo($row['image'])?>" alt="IMG"> -->
 					        </div>
-					        <div class="col-md-12">
+					        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 					        	<?php echo(html_entity_decode($row['description'])) ?>
 					        </div>
 					        <!-- Tag -->

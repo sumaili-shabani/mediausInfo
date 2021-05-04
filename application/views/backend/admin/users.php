@@ -34,7 +34,7 @@
                                     		<div id="load_data"></div>
                                             <div id="load_data_message"></div>
 
-					                    	<?php include("__users_.php") ?>
+					                    	        <?php include("__users_.php") ?>
                                     	<!-- fin de mes scripts -->
                                         
                                     </div>
